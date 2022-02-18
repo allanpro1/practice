@@ -1,0 +1,50 @@
+/* fomart of css */
+/* it starts with a selector of a certaing part eg selector then {
+    property 1;
+
+} */
+
+/* types of selectors */
+/* element selector eg h1{} */
+/* class selector ------ .class name{}*/
+/* id selector ----- .id{}*/
+
+/* types of selectors */
+/* "*" selector for everything */
+/* combined selectors eg .h1.big_header if you wanna style everything with such selectors */
+/* another way is to use ancestir and child eg .h1 .a  first is parent and then child*/
+
+
+/* types of loading css */
+
+/* 1: inline eg <div style="color:blue" */
+/*2 use of style element eg <div> 
+<style>
+ bla bl bla </style>
+</div> */
+
+/* 3 use external css */
+
+html takes the last  style to be defined]
+
+
+*{
+    list-style: none;
+    box-sizing: border-box;
+    padding: 0%;
+    text-decoration: none;
+   
+}
+
+body{
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+
+
+
+
+
+
