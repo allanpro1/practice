@@ -5,13 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot password</title>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script> 
+    <script src="script.js"></script>
+
 </head>
 <body>
     <div class="input_form">
-        <input type="text" placeholder="Input your email Address"><input>
+        <input type="text" placeholder="Input your email Address" id="email_to_reset"></input>
         
         <br> <br>
-        <button type="submit" id="forgot_password">Reset Password</button>
+        <button type="submit" onclick="forgot_pass()">Reset Password</button>
     </div>
     
 </body>

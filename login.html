@@ -5,13 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script> 
+    <script src="script.js"></script>
+
+
 </head>
 <body>
     <h2>Login here</h2>
-    <input type="email" placeholder="input email"></input><br> <br>
-    <input type="password" placeholder="password"> </input><br> <br>
+    <input type="email" placeholder="input email" id="user_mail"></input><br> <br>
+    <input type="password" placeholder="password" id="user_password"> </input><br> <br>
 
-   <button type="submit">Login</button><br> <br>
+   <button type="submit" onclick="login_in()">Login</button><br> <br>
 
 <a href="forgot.html">Forgot Password?</a>
 <br> <br>

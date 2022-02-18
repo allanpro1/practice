@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script> 
 
-
+    <script src="script.js"></script>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
     <link rel="styelesheet" href="style.css">
-    <!-- <script src="all.js"></script> -->
 </head>
 <body>
 
     <!-- For sign up -->
     <h2>Sign up here</h2>
    <div class="Sign_up">
-    <input type="text" placeholder="name">Name</input>
+    <input type="text" placeholder="name" id="user_name">Name</input>
     <br> <br>
-    <input type="email" placeholder="email"></input><br> <br>
-    <input type="password" placeholder="password"></input><br> <br>
-   <input type="password" placeholder=" comfierm password"></input><br> <br>
+    <input type="email" placeholder="email" id="user_email"></input><br> <br>
+    <input type="password" placeholder="password" id="user_pass"></input><br> <br>
+   <input type="password" placeholder=" comfierm password" id="user_pass2"></input><br> <br>
 
-   <button type="submit">Signup</button>
+   <button type="submit" onclick="sign_up()">Signup</button><br> <br>
    <a href="login.html"><h3>Login</h3></a>
   <!-- <button type="menu">hello</button> -->
    </div>
