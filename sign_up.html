@@ -1,77 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="/favicon.ico"/>
-    <link rel="icon" type="image/png" href="/favicon.ico"/>
-    <link rel="stylesheet" type="css" href="style.css">
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script> 
+
     <script src="script.js"></script>
 
-    <!-- For responsiveness -->
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- responiveness -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Test</title>
+    <link rel="styelesheet" href="style.css">
 </head>
-<body >
+<body>
 
-<label class="Word" style=" font-weight: bold;
+    <!-- For sign up -->
+    <h2>Sign up here</h2>
+   <div class="Sign_up">
+    <input type="text" placeholder="name" id="user_name">Name</input>
+    <br> <br>
+    <input type="email" placeholder="email" id="user_email"></input><br> <br>
+    <input type="password" placeholder="password" id="user_pass"></input><br> <br>
+   <input type="password" placeholder=" comfierm password" id="user_pass2"></input><br> <br>
 
-line-height: 90px;
-font-size: 40px;
-color: red; font-family: monospace;">SAMPLE</label>
-    <ul class="Menu" style="float: right; margin-right: 25px;
-    width: 100%;
-    height: 90px;
-    background: rebeccapurple;">
-        <li ><a href="#"> Home</a></li>
-        <li ><a href="#"> About</a></li>
-        <li ><a href="#"> Sign up</a></li>
-        <li ><a href="#"> Services</a></li>
-        <li ><a href="#"> contact</a></li>
-        <!-- <li ><a href="#"> Home</a></li> -->
+   <button type="submit" onclick="sign_up()">Signup</button><br> <br>
+   <a href="login.html"><h3>Login</h3></a>
+  <!-- <button type="menu">hello</button> -->
+   </div>
 
-    </ul>
-    
-    <input type="radio" value="yes"> hello
-    <input type="color">color
 
-<!-- make a pic have different pics appear on screen size change -->
-    <!-- <picture>
-        <source media="(min-width: 650px)" srcset="food.png">
-        <source media="(min-width: 465px)" srcset="ar.png">
-        <img src="girl.png">
-      </picture> -->
 
-      <table border="1">
-        <tr>
-        <th>Name</th>
-        <th>Class</th>
-        <th> Amount Due</th>
-        <th>Genders</th>
-        </tr>
-        <tr>
-            <td>Kapalaga</td>
-            <td>s6</td>
-            <td>2900</td>
-            <td>Ms</td>
-        </tr>
-        <tr>
-            <td>Kapalaga</td>
-            <td>s6</td>
-            <td>2900</td>
-            <td>Ms</td>
-        </tr>
-    </table>
 
-    <!-- how to put Symbols -->
-    <p>I will display &euro;</p>
-    <p>I will display &sum;</p>
-   
+
+
+
+
+
+
 </body>
 </html>

@@ -16,12 +16,12 @@
 </head>
 <body>
     <div class="upload">
-      <input type="text" placeholder=" item name"></input><br><br>
-    <input type="text" placeholder=" item price"></input><br><br>
-    <input type="text" placeholder="maker"></input><br><br>
-    <input type="file" ></input><br><br>
+      <input type="text" placeholder=" item name" id="iten"></input><br><br>
+    <input type="text" placeholder=" item price" id="price"></input><br><br>
+    <input type="text" placeholder="maker" id="maker"></input><br><br>
+    <input type="file" id="pic" ></input><br><br>
 
-    <button type="submit">Upload</button>
+    <button type="submit" onclick="upload_to_db()">Upload</button>
     </div>
 
     <br> <br>
@@ -30,32 +30,25 @@
 
     <div class="monitoring_table">
       <table border="1" class="table" id="admin_table">
-        <tr>
+        <thead>
           <th>Item name </th>
           <th>Item price </th>
           <th>Item maker </th>
           <th>Item image</th>
           <th>Action</th>
-
-
-        </tr>
-        <tr>
-         <td></td>
-         <td></td>
-         <td></td>
-          <td></td>
-         <td>
-           <button class="btn"><img src="pen.png">  </button>
-           <button class="btn"><img src="trash.png">  </button>
-
-         </td>
+        </thead>
+        <tbody>
+          
+        </tbody>
         
-
-        </tr>
       </table>
 
     </div>
 
+    <!-- calling the read function for the table -->
+<script>
+  read()
+</script>
 
   <!-- hha   -->
 </body>
