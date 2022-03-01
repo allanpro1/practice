@@ -177,7 +177,15 @@ firebase.auth().onAuthStateChanged(function(user) {
   // to be used when calling form the db 
   item_name: document.getElementById('iten').value,
   item_price: document.getElementById('price').value,
-  maker:document.getElementById('maker').value
+  maker:document.getElementById('maker').value,
+  gender:document.getElementById('radio_button').value,
+  car_type:document.getElementById('cars').value,
+  paymentMethod:document.getElementById('cash').checked,
+  paymentMethod2:document.getElementById('check').checked,
+
+
+
+
 
 
 })
@@ -218,7 +226,16 @@ firebase.auth().onAuthStateChanged(function(user) {
          <td> `+ product["item_name"] + `</td>
          <td>`+ product["item_price"] +`</td>
           <td>`+product["maker"] +`</td>
+          
+
+
           <td></td>
+          
+          <td> `+ product["gender"] + `</td>
+          <td>`+ product["car_type"] +`</td>
+           <td>`+product["paymentMethod"] +`</td>
+           <td>`+product["paymentMethod2"] +`</td>
+
          <td>
           
            <button class="btn" onClick="delete_itens('`+ doc.id +`')"><img src="trash.png">  </button>
@@ -241,13 +258,29 @@ firebase.auth().onAuthStateChanged(function(user) {
           product = doc.data();
           div_ref = document.getElementById('items');
 
-          div_ref.innerHTML+= `<div lass="item_card" ><img src="" alt="to hold the image">
+          div_ref.innerHTML+= `<div class="item_card" ><img src="" alt="to hold the image">
           <h3>`+ product["item_name"] + `</h3>
           <h5>`+ product["item_price"] +`</h5>
-          <h6>`+product["maker"] +`</h6></div>`;
+          <h6>`+product["maker"] +`</h6></div>
+          <select id="mumber" name="number">
+      <option value="1">1 </option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5 </option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select> <br><br>
+    <button type="submit" id="add_to_cart" onclic="addToCart()"> Add to cart</button><br><br><br>
+
+    ` 
+    ;
 
         });
-    });
+    })
 
   }
 
@@ -262,6 +295,26 @@ firebase.auth().onAuthStateChanged(function(user) {
   });
 
   }
+
+
+
+  // to upload pic
+
+
+
+
+
+  // validator 
+
+  // function validate(){
+  //   var phoneNumber = document.getElementById('phone-number').value;
+  //   var postalCode = document.getElementById('postal-code').value;
+  //   var phoneRGEX = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+  //   var postalRGEX = "^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$";
+  //   var phoneResult = phoneRGEX.test(phoneNumber);
+  //   var postalResult = postalRGEX.test(postalCode);
+  //   alert("phone:"+phoneResult + ", postal code: "+postalResult);
+  // }
 
 
 

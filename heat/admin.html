@@ -19,7 +19,23 @@
       <input type="text" placeholder=" item name" id="iten"></input><br><br>
     <input type="text" placeholder=" item price" id="price"></input><br><br>
     <input type="text" placeholder="maker" id="maker"></input><br><br>
-    <input type="file" id="pic" ></input><br><br>
+    <!-- make the name and id the same for radio -->
+    <input type="radio" value="male" name="radio" id="radio_button">  male
+    <input type="radio" value="Female" name="radio" id="radio_button"> Female <br><br>
+
+    <select id="cars" name="cars">
+      <option value="volvo">Volvo </option>
+      <option value="saab">Subaru</option>
+      <option value="mercedes">Mercedes benz</option>
+      <option value="audi">Audi</option>
+    </select><br><br>
+
+      <input type="checkbox"  id="cash"> cash
+      <input type="checkbox"  id="check">Cheque
+
+    <!-- </select> -->
+
+    <input type="file" id="pic" placeholder="tap to add pic" onchange="uploadCover(this)"></input><br><br>
 
     <button type="submit" onclick="upload_to_db()">Upload</button>
     </div>
@@ -35,6 +51,9 @@
           <th>Item price </th>
           <th>Item maker </th>
           <th>Item image</th>
+          <th>gender</th>
+          <th>car </th>
+          <th colspan="2">cheque/cash</th>
           <th>Action</th>
         </thead>
         <tbody>
