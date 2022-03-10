@@ -10,6 +10,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script> 
+
+    <!-- add this for firebase torage -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-storage.js"></script> 
     <script src="script.js"></script>
 
 
@@ -35,7 +38,7 @@
 
     <!-- </select> -->
 
-    <input type="file" id="pic" placeholder="tap to add pic" onchange="uploadCover(this)"></input><br><br>
+    <input type="file" id="pic" placeholder="tap to add pic" onchange="uploadCover()"></input><br><br>
 
     <button type="submit" onclick="upload_to_db()">Upload</button>
     </div>

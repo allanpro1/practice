@@ -201,6 +201,32 @@ function upload_to_db() {
 }
 
 
+// to upload a pic
+
+function uploadCover() {
+  var file = document.getElementById('pic').files[0]
+
+  var storageRef = firebase.storage().ref(file.name);
+  var task = storageRef.put(file);
+  task.on('state_changed', function progress(snapshot) {
+      var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+      console.log(percentage + "%");
+
+  }, function error(err) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+      console.log("failed to upload" + errorMessage);
+
+  },function complete() {
+      console.log("image uploaded");
+      task.snapshot.ref.getDownloadURL().then((downloadURL) => {
+          // do logic with downloadURL
+      });
+  });
+}
+
+
+
 // read them into table and then main shop
 // for table...................................
 
@@ -257,7 +283,7 @@ function read_main() {
         product = doc.data();
         div_ref = document.getElementById('items');
 
-        div_ref.innerHTML += `<div class="item_card" ><img src="" alt="to hold the image">
+        div_ref.innerHTML += `<div class="item_card" > `+ product["pic"]`<img src="" alt="to hold the image">
           <h3 id ="ItemName">`+ product["item_name"] + `</h3>
           <h5>`+ product["item_price"] + `</h5>
           <h6>`+ product["maker"] + `</h6></div>
