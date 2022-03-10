@@ -242,22 +242,22 @@ function read() {
         //  key names that we used wheninputing in the db iin upload function
         newRow.innerHTML = `<tr> 
        
-         <td> `+ product["item_name"] + `</td>
-         <td>`+ product["item_price"] + `</td>
-          <td>`+ product["maker"] + `</td>
+         <td> ${product["item_name"]}</td>
+         <td>${product["item_price"]}</td>
+          <td>${product["maker"]}</td>
           
 
 
           <td><img src="${product['item_image']}" height=50></td>
           
-          <td> `+ product["gender"] + `</td>
-          <td>`+ product["car_type"] + `</td>
-           <td>`+ product["paymentMethod"] + `</td>
-           <td>`+ product["paymentMethod2"] + `</td>
+          <td> ${product["gender"]}</td>
+          <td>${product["car_type"]}</td>
+           <td>${product["paymentMethod"]}</td>
+           <td>${product["paymentMethod2"]}</td>
 
          <td>
           
-           <button class="btn" onClick="delete_itens('`+ doc.id + `')"><img src="trash.png">  </button>
+           <button class="btn" onClick="delete_itens('${doc.id}')"><img src="trash.png">  </button>
          </td>
         </tr>`
 
@@ -278,9 +278,9 @@ function read_main() {
         div_ref = document.getElementById('items');
 
         div_ref.innerHTML += `<div class="item_card" > <img src="${product['item_image']}" height=150 alt="to hold the image">
-          <h3 id ="ItemName">`+ product["item_name"] + `</h3>
-          <h5>`+ product["item_price"] + `</h5>
-          <h6>`+ product["maker"] + `</h6></div>
+          <h3 id ="ItemName">${product["item_name"]}</h3>
+          <h5>${product["item_price"]}</h5>
+          <h6>${product["maker"]}</h6></div>
           <select id="mumber" name="number">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -293,7 +293,7 @@ function read_main() {
       <option value="9">9</option>
       <option value="10">10</option>
     </select> <br><br>
-    <button type="submit" id="add_to_cart" onclick="addToCart('`+ doc.id + `')"> Add to cart</button><br><br><br>
+    <button type="submit" id="add_to_cart" onclick="addToCart('${doc.id}')"> Add to cart</button><br><br><br>
 
     `
           ;
