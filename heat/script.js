@@ -167,9 +167,8 @@ firebase.auth().onAuthStateChanged(function (user) {
 // for sending data to the bd ...................... in the damin hml
 
 
-function upload_to_db() {
+function upload_to_db(imageURL) {
   // Add a new document with a generated id.
-
 
   // remember to initialize db up in the initialize function 
   db.collection("Products").add({
@@ -177,17 +176,12 @@ function upload_to_db() {
     // to be used when calling form the db 
     item_name: document.getElementById('iten').value,
     item_price: document.getElementById('price').value,
+    item_image: imageURL,
     maker: document.getElementById('maker').value,
     gender: document.getElementById('radio_button').value,
     car_type: document.getElementById('cars').value,
     paymentMethod: document.getElementById('cash').checked,
     paymentMethod2: document.getElementById('check').checked,
-
-
-
-
-
-
   })
     .then((docRef) => {
       console.log("Document written with ID: ", docRef.id);
@@ -202,8 +196,7 @@ function upload_to_db() {
 
 
 // to upload a pic
-
-function uploadCover() {
+function addProduct() {
   var file = document.getElementById('pic').files[0]
 
   var storageRef = firebase.storage().ref(file.name);
@@ -221,6 +214,7 @@ function uploadCover() {
       console.log("image uploaded");
       task.snapshot.ref.getDownloadURL().then((downloadURL) => {
           // do logic with downloadURL
+          upload_to_db(downloadURL);
       });
   });
 }
@@ -254,7 +248,7 @@ function read() {
           
 
 
-          <td></td>
+          <td><img src="${product['item_image']}" height=50></td>
           
           <td> `+ product["gender"] + `</td>
           <td>`+ product["car_type"] + `</td>
@@ -283,12 +277,12 @@ function read_main() {
         product = doc.data();
         div_ref = document.getElementById('items');
 
-        div_ref.innerHTML += `<div class="item_card" > `+ product["pic"]`<img src="" alt="to hold the image">
+        div_ref.innerHTML += `<div class="item_card" > <img src="${product['item_image']}" height=150 alt="to hold the image">
           <h3 id ="ItemName">`+ product["item_name"] + `</h3>
           <h5>`+ product["item_price"] + `</h5>
           <h6>`+ product["maker"] + `</h6></div>
           <select id="mumber" name="number">
-      <option value="1">1 </option>
+      <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
