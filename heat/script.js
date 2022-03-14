@@ -23,6 +23,7 @@ firebase.initializeApp(firebaseConfig);
 
 auth = firebase.auth();
 db = firebase.firestore();
+var uid = null;
 // function to manage signup when we click sign up button
 
 function sign_up() {
@@ -150,8 +151,10 @@ function logout() {
 
 //............................state observer to always prevrnt user from accessing other pages ifnot signed in............................
 
-firebase.auth().onAuthStateChanged(function (user) {
+firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    uid = user.uid;
+    console.log(uid)
     // User is signed in.
   } else {
     if (window.location.pathname == "/mainshop.html") {
@@ -194,6 +197,9 @@ function upload_to_db(imageURL) {
     });
 }
 
+//  make sure you add this line below to all your html 
+                      // 👇👇👇
+{/* <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-storage.js"></script>  */}
 
 // to upload a pic
 function addProduct() {
@@ -273,7 +279,6 @@ function read_main() {
   db.collection("Products")
     .onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        console.log("yeh");
         product = doc.data();
         div_ref = document.getElementById('items');
 
@@ -336,28 +341,44 @@ function addToCart(product) {
 
 
 // now reading the cart things for the user
-async function read_cart()   {
- user = await firebase.auth().currentUser,
- uid = user.uid,
+ function read_cart()   {
+  console.log(uid);
+// variable that will hold the total amount
+  var sum = 0;
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
 
   // the where clause makes sure it only reads items collected by that specific user 
-  db.collection("cart").where('owner_id', '==', "uid")
+  db.collection("cart").where('owner_id', '==', user.uid)
     .onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
 
-        console.log(doc.data());
+        // getting one for the cart with specific id
         product = doc.data();
-        // div_ref = document.getElementById('items');
+        // the div where we are to display our things
+        div_ref = document.getElementById('cart_items');
 
-        // div_ref.innerHTML += `
-        //   <h3>`+ product[""] + `</h3>
-        //   <h5>`+ product["qty"] + `</h5>
-        //   <h6>`+ product["maker"] + `</h6></div>
-        //   <select id="mumber" name="number">`
-        //   ;
+     db.collection("Products").doc(product["products_id"]).get().then((docc)=>{
+       var allProducts = docc.data();
+      //  multiplying to get the gross total
+       sum += parseInt (product["qty"])* parseInt(allProducts["item_price"]);
+       console.log(allProducts);
+      div_ref.innerHTML += `
+      <h3>Name:  `+ allProducts["item_name"] + `</h3>
+      <h5>quantity: `+ product["qty"] + `</h5>
+      <h6>Unit price: `+ allProducts["item_price"] + `</h6>
+       
+      </div>
+      `;
+     });
+
 
       });
-    })
+      document.getElementById('total').innerHTML =`
+      <h1> total: ${sum}</h1>`;
+    
+    })}})
 
 }
 
