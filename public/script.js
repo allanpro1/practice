@@ -141,7 +141,7 @@ function logout() {
     // Sign-out successful.
     window.location.href = "index.html";
   }).catch((error) => {
-    alert("login failed" + errorMessage);
+    alert("logout failed" + errorMessage);
     // An error happened.
   });
 
@@ -198,8 +198,8 @@ function upload_to_db(imageURL) {
 }
 
 //  make sure you add this line below to all your html 
-                      // 👇👇👇
-{/* <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-storage.js"></script>  */}
+// 👇👇👇
+{/* <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-storage.js"></script>  */ }
 
 // to upload a pic
 function addProduct() {
@@ -208,20 +208,20 @@ function addProduct() {
   var storageRef = firebase.storage().ref(file.name);
   var task = storageRef.put(file);
   task.on('state_changed', function progress(snapshot) {
-      var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
-      console.log(percentage + "%");
+    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log(percentage + "%");
 
   }, function error(err) {
     var errorCode = error.code;
     var errorMessage = error.message;
-      console.log("failed to upload" + errorMessage);
+    console.log("failed to upload" + errorMessage);
 
-  },function complete() {
-      console.log("image uploaded");
-      task.snapshot.ref.getDownloadURL().then((downloadURL) => {
-          // do logic with downloadURL
-          upload_to_db(downloadURL);
-      });
+  }, function complete() {
+    console.log("image uploaded");
+    task.snapshot.ref.getDownloadURL().then((downloadURL) => {
+      // do logic with downloadURL
+      upload_to_db(downloadURL);
+    });
   });
 }
 
@@ -335,52 +335,56 @@ function addToCart(product) {
 
     }
 
-  ).then(()=>{
-    alert("Item Added to cart😎")  })
+  ).then(() => {
+    alert("Item Added to cart😎")
+  })
 }
 
 
 // now reading the cart things for the user
- function read_cart()   {
+function read_cart() {
   console.log(uid);
-// variable that will hold the total amount
+  // variable that will hold the total amount
   var sum = 0;
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
 
-  // the where clause makes sure it only reads items collected by that specific user 
-  db.collection("cart").where('owner_id', '==', user.uid)
-    .onSnapshot((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
+      // the where clause makes sure it only reads items collected by that specific user 
+      db.collection("cart").where('owner_id', '==', user.uid)
+        .onSnapshot((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
 
-        // getting one for the cart with specific id
-        product = doc.data();
-        // the div where we are to display our things
-        div_ref = document.getElementById('cart_items');
+            // getting one for the cart with specific id
+            product = doc.data();
+            // the div where we are to display our things
+            div_ref = document.getElementById('cart_items');
 
-     db.collection("Products").doc(product["products_id"]).get().then((docc)=>{
-       var allProducts = docc.data();
-      //  multiplying to get the gross total
-       sum += parseInt (product["qty"])* parseInt(allProducts["item_price"]);
-       console.log(allProducts);
-      div_ref.innerHTML += `
+            db.collection("Products").doc(product["products_id"]).get().then((docc) => {
+              var allProducts = docc.data();
+              //  multiplying to get the gross total
+              sum += parseInt(product["qty"]) * parseInt(allProducts["item_price"]);
+              console.log(allProducts);
+              div_ref.innerHTML += `
       <h3>Name:  `+ allProducts["item_name"] + `</h3>
       <h5>quantity: `+ product["qty"] + `</h5>
       <h6>Unit price: `+ allProducts["item_price"] + `</h6>
        
       </div>
       `;
-     });
+            });
 
 
-      });
-      document.getElementById('total').innerHTML =`
+          });
+          document.getElementById('total').innerHTML = `
       <h1> total: ${sum}</h1>`;
-    
-    })}})
+
+        })
+    }
+  })
 
 }
+
 
 
 
